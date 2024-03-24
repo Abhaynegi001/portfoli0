@@ -6,6 +6,8 @@ import { User } from "./modules/user.module.js";
 import cors from 'cors'
 import path from 'path'
 
+const __dirname = path.resolve(path.dirname('')); 
+
 const app = express();
 
 connectDb();
