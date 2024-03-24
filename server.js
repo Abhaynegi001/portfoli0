@@ -4,13 +4,9 @@ import express from "express";
 import connectDb from "./Database/db.js";
 import { User } from "./modules/user.module.js";
 import cors from 'cors'
-import path from "path"
-
-
+import path from 'path'
 
 const app = express();
-
-const __dirname = path.resolve(path.dirname('')); 
 
 connectDb();
 
@@ -18,10 +14,10 @@ connectDb();
 app.use(cors())
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "newPortfolio", "dist")));
-  res.sendFile(path.resolve(__dirname, "newPortfolio", "dist", "index.html"));
-});
+app.use(express.static(path.join(__dirname,'./client/dist')))
+app.get('*',function(req,res){
+  res.sendFile(path.join(__dirname,'./client/dist/index.html'))
+})
 
 
 
